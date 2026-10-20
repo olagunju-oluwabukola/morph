@@ -1,0 +1,128 @@
+@import './hover.css';
+
+/* ---------- Fonts (Figtree, variable) ---------- */
+@font-face {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('./assets/fonts/figtree-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('./assets/fonts/figtree-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------- Base ---------- */
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #13322c;
+  font-family: 'Figtree', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
+}
+a { color: inherit; text-decoration: none; }
+a:hover { color: #17bc2e; }
+img { max-width: 100%; }
+
+/* ---------- Shared component styles ---------- */
+.cta-btn {
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 18px 28px;
+  border-radius: 999px;
+}
+.cta-btn--yellow { background: #13322c; color: #ffffff; }
+.cta-btn--yellow:hover { background: #0c6417; color: #ffffff; }
+.cta-btn--dark { background: #ffcd00; color: #13322c; }
+.cta-btn--dark:hover { background: #ffffff; color: #13322c; }
+
+/* contact form */
+.mh-label { display: flex; flex-direction: column; gap: 8px; font-size: 14px; font-weight: 600; }
+.mh-field {
+  font: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 14px 16px;
+  border: 1px solid rgba(19, 50, 44, 0.2);
+  border-radius: 12px;
+  background: #f4f7f3;
+  color: #13322c;
+  outline: none;
+}
+.mh-field:focus { border-color: #17bc2e; background: #ffffff; }
+.mh-field--area { resize: vertical; }
+.mh-chip {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  background: #ffffff;
+  color: #13322c;
+  border: 1px solid rgba(19, 50, 44, 0.22);
+}
+.mh-chip--active { background: #13322c; color: #ffffff; border-color: #13322c; }
+.mh-submit {
+  align-self: flex-start;
+  background: #ffcd00;
+  color: #13322c;
+  border: 0;
+  border-radius: 999px;
+  padding: 17px 30px;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.mh-submit:hover { background: #13322c; color: #ffffff; }
+.mh-reset {
+  margin-top: 8px;
+  background: transparent;
+  border: 1px solid rgba(19, 50, 44, 0.25);
+  border-radius: 999px;
+  padding: 13px 22px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: #13322c;
+  cursor: pointer;
+}
+
+/* ---------- Responsive layer ----------
+   Most layout is already fluid (clamp() sizes + auto-fit grids).
+   These rules cover what clamp/auto-fit can't. The header has its own rules in Header.css. */
+@media (max-width: 640px) {
+  .mh-hero-overlay { background: linear-gradient(180deg, rgba(19,50,44,0.78) 0%, rgba(19,50,44,0.9) 100%) !important; }
+  .mh-hero-in { min-height: 0 !important; padding-top: 56px !important; padding-bottom: 48px !important; }
+  .mh-stats > div { gap: 12px !important; }
+  .mh-stats span:first-child { font-size: 34px !important; }
+  .mh-hub-label { left: 12px !important; right: 12px !important; bottom: 12px !important; font-size: 14px !important; padding: 10px 14px !important; }
+
+  .mh-foot-in { padding-top: 48px !important; }
+  .mh-foot-grid { grid-template-columns: 1fr 1fr !important; gap: 32px 20px !important; }
+  .mh-foot-grid > div:first-child,
+  .mh-foot-grid > div:last-child { grid-column: 1 / -1; }
+  .mh-foot-bar { margin-top: 40px !important; }
+
+  .mh-btn { padding: 14px 20px !important; text-align: center; justify-content: center; }
+  .mh-btn[style*="align-self"] { align-self: stretch !important; }
+  .cta-btn { white-space: normal; text-align: center; }
+
+  h1 { overflow-wrap: anywhere; }
+  article h3, article h4 { overflow-wrap: anywhere; }
+  .mh-num-row { grid-template-columns: 44px 1fr !important; gap: 14px !important; }
+}
+@media (max-width: 380px) {
+  .mh-stats span:first-child { font-size: 30px !important; }
+}
